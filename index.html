@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Mello Health - A Healthcare Platform</title>
     <link rel="icon" href="/static/assests/img/MelloHealthIcon.jpg" type="image/jpeg" sizes="any">
     <link rel="shortcut icon" href="/static/assests/img/MelloHealthIcon.jpg" type="image/jpeg">
@@ -949,6 +953,205 @@
             font-size: 12px;
         }
         
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .logo {
+                font-size: 24px;
+                gap: 8px;
+            }
+            
+            .logo-icon {
+                height: 30px;
+            }
+            
+            .header-buttons {
+                gap: 8px;
+            }
+            
+            .btn-call, .btn-login {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .slogan-section {
+                padding: 15px 10px;
+            }
+            
+            .slogan-text {
+                font-size: 20px;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            
+            .slogan-word {
+                font-size: 18px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .flash-sale {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .flash-content {
+                margin: 0 30px;
+            }
+            
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .service-item {
+                padding: 15px;
+            }
+            
+            .service-icon {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+            
+            .service-title {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            
+            .service-description {
+                font-size: 14px;
+            }
+            
+            .offers-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .offer-card {
+                padding: 15px;
+            }
+            
+            .offer-title {
+                font-size: 16px;
+            }
+            
+            .offer-description {
+                font-size: 14px;
+            }
+            
+            .testimonials-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .testimonial-card {
+                padding: 15px;
+            }
+            
+            .testimonial-header {
+                margin-bottom: 10px;
+            }
+            
+            .avatar {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            
+            .user-info h4 {
+                font-size: 16px;
+            }
+            
+            .user-info p {
+                font-size: 14px;
+            }
+            
+            .testimonial-text p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            .images-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                gap: 10px;
+            }
+            
+            .main-image {
+                height: 120px;
+            }
+            
+            .side-images {
+                flex-direction: row;
+                gap: 8px;
+            }
+            
+            .report-image, .lab-image {
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            .hospital-title {
+                font-size: 22px;
+                line-height: 1.3;
+            }
+            
+            .rating-number {
+                font-size: 42px;
+            }
+            
+            .satisfaction-rate {
+                font-size: 32px;
+            }
+            
+            .payment-methods {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .payment-method {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            /* Carousel improvements for mobile */
+            .carousel-nav {
+                padding: 0 4px;
+            }
+            
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+            }
+            
+            .carousel-dots {
+                gap: 6px;
+                margin-top: 8px;
+            }
+            
+            .carousel-dot {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .carousel-dot.active {
+                width: 16px;
+            }
+        }
+        
         @media (max-width: 480px) {
             .container {
                 margin: 0;
@@ -956,70 +1159,326 @@
             }
             
             .header {
-                padding: 15px 20px;
+                padding: 10px 15px;
+                flex-direction: row;
+                gap: 0;
+            }
+            
+            .logo {
+                font-size: 20px;
+                gap: 6px;
+            }
+            
+            .logo-icon {
+                height: 28px;
+            }
+            
+            .header-buttons {
+                gap: 6px;
+            }
+            
+            .btn-call, .btn-login {
+                padding: 6px 12px;
+                font-size: 12px;
             }
             
             .slogan-section {
-                padding: 20px 15px;
-            }
-            .logo-icon { height: 34px; }
-            
-            .slogan-section::before,
-            .slogan-section::after {
-                display: none;
+                padding: 12px 10px;
             }
             
             .slogan-text {
-                font-size: 22px;
-                gap: 10px;
+                font-size: 18px;
+                gap: 6px;
             }
             
             .slogan-word {
-                font-size: 20px;
+                font-size: 16px;
             }
             
             .content {
-                padding: 20px;
+                padding: 12px;
+            }
+            
+            .flash-sale {
+                padding: 10px 12px;
+                font-size: 13px;
             }
             
             .flash-content {
-                margin: 0 40px;
+                margin: 0 25px;
             }
             
-            /* bottom-section carousel already handles its own layout on mobile */
+            .service-grid {
+                gap: 12px;
+            }
+            
+            .service-item {
+                padding: 12px;
+            }
+            
+            .service-icon {
+                font-size: 20px;
+            }
+            
+            .service-title {
+                font-size: 15px;
+            }
+            
+            .service-description {
+                font-size: 13px;
+            }
             
             .offers-grid {
-                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .offer-card {
+                padding: 12px;
+            }
+            
+            .offer-title {
+                font-size: 15px;
+            }
+            
+            .offer-description {
+                font-size: 13px;
             }
             
             .testimonials-section {
-                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .testimonial-card {
+                padding: 12px;
+            }
+            
+            .avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+            
+            .user-info h4 {
+                font-size: 15px;
+            }
+            
+            .user-info p {
+                font-size: 13px;
+            }
+            
+            .testimonial-text p {
+                font-size: 13px;
             }
             
             .images-grid {
-                grid-template-columns: 1fr;
-                max-width: 300px;
+                max-width: 250px;
             }
             
-            .side-images {
-                flex-direction: row;
-                gap: 10px;
+            .main-image {
+                height: 100px;
+            }
+            
+            .report-image, .lab-image {
+                height: 50px;
+                font-size: 18px;
             }
             
             .hospital-title {
-                font-size: 24px;
+                font-size: 20px;
             }
             
             .rating-number {
-                font-size: 48px;
-            }
-            
-            .satisfaction-rate {
                 font-size: 36px;
             }
             
+            .satisfaction-rate {
+                font-size: 28px;
+            }
+            
             .payment-methods {
-                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .payment-method {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            
+            /* Enhanced carousel for small screens */
+            .carousel-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 16px;
+            }
+            
+            .carousel-dot {
+                width: 5px;
+                height: 5px;
+            }
+            
+            .carousel-dot.active {
+                width: 14px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .header {
+                padding: 8px 12px;
+            }
+            
+            .logo {
+                font-size: 18px;
+                gap: 5px;
+            }
+            
+            .logo-icon {
+                height: 24px;
+            }
+            
+            .btn-call, .btn-login {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+            
+            .slogan-text {
+                font-size: 16px;
+                gap: 5px;
+            }
+            
+            .slogan-word {
+                font-size: 14px;
+            }
+            
+            .content {
+                padding: 10px;
+            }
+            
+            .service-item, .offer-card, .testimonial-card {
+                padding: 10px;
+            }
+            
+            .service-title, .offer-title {
+                font-size: 14px;
+            }
+            
+            .service-description, .offer-description {
+                font-size: 12px;
+            }
+            
+            .hospital-title {
+                font-size: 18px;
+            }
+            
+            .rating-number {
+                font-size: 32px;
+            }
+            
+            .satisfaction-rate {
+                font-size: 24px;
+            }
+        }
+        
+        /* Landscape orientation fixes for mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .header {
+                flex-direction: row;
+                padding: 8px 15px;
+            }
+            
+            .slogan-section {
+                padding: 10px 15px;
+            }
+            
+            .slogan-text {
+                font-size: 18px;
+            }
+            
+            .content {
+                padding: 10px 15px;
+            }
+        }
+        
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .logo-icon {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+        
+        /* Mobile touch improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .service-item, .offer-card, .testimonial-card, .dashboard-card, .app-card {
+                -webkit-tap-highlight-color: rgba(74, 144, 226, 0.1);
+                touch-action: manipulation;
+            }
+            
+            .btn-call, .btn-login, .carousel-btn {
+                min-height: 44px;
+                min-width: 44px;
+                touch-action: manipulation;
+            }
+            
+            .carousel-dot {
+                min-height: 8px;
+                min-width: 8px;
+            }
+        }
+        
+        /* Prevent text selection on interactive elements */
+        .service-item, .offer-card, .testimonial-card, .dashboard-card, .app-card,
+        .btn-call, .btn-login, .carousel-btn, .carousel-dot {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Smooth scrolling for mobile */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Prevent horizontal scroll on mobile */
+        body {
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Fluid scaling to keep content intact on smaller devices */
+        :root {
+            --fz-xxs: clamp(10px, 2.2vw, 12px);
+            --fz-xs: clamp(12px, 2.6vw, 14px);
+            --fz-sm: clamp(13px, 2.9vw, 15px);
+            --fz-md: clamp(14px, 3.2vw, 16px);
+            --fz-lg: clamp(16px, 4.2vw, 20px);
+            --fz-xl: clamp(18px, 5.2vw, 24px);
+            --fz-xxl: clamp(22px, 7.5vw, 32px);
+        }
+
+        /* Ensure media and flex children don't overflow */
+        img, video { max-width: 100%; height: auto; }
+        .container, .content, .service-content, .offer-content, .card-content { min-width: 0; overflow-wrap: anywhere; }
+
+        /* Fluid typography overrides */
+        .slogan-text { font-size: clamp(18px, 4.5vw, 26px); }
+        .service-content h3 { font-size: clamp(15px, 3.6vw, 16px); }
+        .service-content p { font-size: clamp(13px, 3.2vw, 14px); }
+        .section-title { font-size: clamp(12px, 2.8vw, 14px); }
+        .offer-content h3 { font-size: clamp(15px, 3.6vw, 16px); }
+        .offer-content p { font-size: clamp(12px, 3vw, 13px); }
+        .flash-content h3 { font-size: clamp(16px, 4.2vw, 18px); }
+        .flash-content p { font-size: clamp(12px, 3vw, 14px); }
+        .hospital-title { font-size: clamp(20px, 6vw, 32px); }
+        .screening-section h3 { font-size: clamp(18px, 5vw, 24px); }
+        .rating-number { font-size: clamp(32px, 10vw, 64px); }
+        .satisfaction-rate { font-size: clamp(24px, 7vw, 48px); }
+
+        /* Respect safe areas on devices with notches (Android/iOS) */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
             }
         }
     </style>
@@ -1208,8 +1667,8 @@
                     <h3>Get Screened at Home</h3>
                     <p>1000s of tests, from the comfort of your home</p>
                     
-                    <div class="images-grid">
-                        <div class="main-image">
+                    <div class="images-grid" style = "margin-bottom: -107px;">
+                        <div class="main-image" style = "    margin-left: -100px;">
                             <div class="family-placeholder">👨‍👩‍👧‍👦</div>
                         </div>
                         <div class="side-images">
