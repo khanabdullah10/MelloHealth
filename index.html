@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mello Health - A Healthcare Platform</title>
+    <link rel="icon" href="/static/assests/img/MelloHealthIcon.jpg" type="image/jpeg" sizes="any">
+    <link rel="shortcut icon" href="/static/assests/img/MelloHealthIcon.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="/static/assests/img/MelloHealthIcon.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        .logo-icon {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            image-rendering: -webkit-optimize-contrast;
+            filter: drop-shadow(0 0 1px rgba(0,0,0,0.12));
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-call {
+            background: #10c469;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-call:hover {
+            background: #0ea85c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 196, 105, 0.3);
+        }
+        
+        .btn-login {
+            background: transparent;
+            color: #4a90e2;
+            padding: 10px 20px;
+            border: 2px solid #4a90e2;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Animated Slogan Styles */
+        .slogan-section {
+            background: white;
+            padding: 25px 30px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .slogan-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 26px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-weight: 400;
+            color: #4a90e2;
+            position: relative;
+            z-index: 2;
+            line-height: 1.4;
+        }
+        
+        .slogan-word {
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
+            animation: fadeInUpClean 0.8s ease forwards, repeatAnimation 5s ease-in-out infinite;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .slogan-word:hover {
+            transform: translateY(-3px) scale(1.05);
+            color: #357abd;
+            text-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+        }
+        
+        .slogan-word:nth-child(1) { animation-delay: 0.1s, 0.1s; }
+        .slogan-word:nth-child(2) { animation-delay: 0.2s, 0.2s; }
+        .slogan-word:nth-child(3) { animation-delay: 0.3s, 0.3s; }
+        .slogan-word:nth-child(4) { animation-delay: 0.4s, 0.4s; }
+        .slogan-word:nth-child(5) { animation-delay: 0.5s, 0.5s; }
+        .slogan-word:nth-child(6) { animation-delay: 0.6s, 0.6s; }
+        .slogan-word:nth-child(7) { animation-delay: 0.7s, 0.7s; }
+        
+        @keyframes fadeInUpClean {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes repeatAnimation {
+            0%, 80% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            85% {
+                opacity: 0.3;
+                transform: translateY(5px) scale(0.98);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Add decorative elements */
+        .slogan-section::before {
+            content: '❋';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #4a90e2;
+            opacity: 0.6;
+            animation: rotateSlow 8s linear infinite;
+        }
+        
+        .slogan-section::after {
+            content: '❋';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #4a90e2;
+            opacity: 0.6;
+            animation: rotateSlow 8s linear infinite reverse;
+        }
+        
+        @keyframes rotateSlow {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .whatsapp-booking {
+            background: linear-gradient(135deg, #25d366 0%, #20c75a 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-booking:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .whatsapp-text h3 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .whatsapp-text p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .flash-sale {
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 106, 53, 0.3);
+        }
+        
+        .flash-sale:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 106, 53, 0.4);
+        }
+        
+        .flash-sale::before {
+            content: '⚡';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            animation: pulse 2s infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+        
+        .flash-sale::after {
+            content: '⚡';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            animation: pulse 2s infinite 0.5s;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 0.7; 
+                transform: translateY(-50%) scale(1);
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% { 
+                opacity: 1; 
+                transform: translateY(-50%) scale(1.3);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+        
+        .flash-content {
+            margin: 0 60px;
+            text-align: center;
+        }
+        
+        .flash-content h3 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .flash-content p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .download-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .services {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .service-item {
+            background: white;
+            border: 2px solid #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .service-item:hover {
+            border-color: #4a90e2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.1);
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .diagnostics .service-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .health-check .service-icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .consultation .service-icon {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-content h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .service-content p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .service-arrow {
+            color: #999;
+            font-size: 20px;
+        }
+        
+        .bottom-section {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        /* Bottom carousel */
+        .bottom-carousel {
+            display: flex;
+            width: 100%;
+            transition: transform 0.4s ease;
+            will-change: transform;
+        }
+
+        .bottom-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #dbe2ef;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #4a90e2;
+            opacity: 1;
+            width: 20px;
+        }
+
+        /* Carousel navigation controls */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+            padding: 0 6px;
+        }
+
+        .carousel-btn {
+            pointer-events: all;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #e6eef9;
+            background: rgba(255,255,255,0.85);
+            color: #4a90e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(74, 144, 226, 0.18);
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            backdrop-filter: blur(6px);
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: #4a90e2;
+            color: #ffffff;
+            box-shadow: 0 10px 24px rgba(74, 144, 226, 0.28);
+        }
+
+        .carousel-btn:active { transform: scale(0.96); }
+
+        /* Edge fades for nicer visual */
+        .carousel-fade-left, .carousel-fade-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            pointer-events: none;
+        }
+        .carousel-fade-left { left: 0; background: linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0) 100%); }
+        .carousel-fade-right { right: 0; background: linear-gradient(270deg, #ffffff 0%, rgba(255,255,255,0) 100%); }
+
+        /* Active slide emphasis */
+        .bottom-slide .dashboard-card, .bottom-slide .app-card {
+            transform: scale(0.96);
+            opacity: 0.9;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
+        }
+        .bottom-slide.active .dashboard-card, .bottom-slide.active .app-card {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: 0 12px 32px rgba(74, 144, 226, 0.12);
+        }
+        
+        .dashboard-card, .app-card {
+            background: white;
+            border: 2px solid #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover, .app-card:hover {
+            border-color: #4a90e2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.1);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        
+        .dashboard-card .card-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .app-card .card-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .card-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .card-content p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Special Offers Section */
+        .special-offers-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .offer-card {
+            background: white;
+            border: 2px solid #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .offer-card:hover {
+            border-color: #4a90e2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.1);
+        }
+        
+        .offer-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .offer-icon.vitamin {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+        }
+        
+        .offer-icon.health {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .offer-content {
+            flex: 1;
+        }
+        
+        .offer-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .offer-price {
+            margin-bottom: 8px;
+        }
+        
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .discounted-price {
+            color: #10c469;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .offer-content p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .offer-arrow {
+            color: #999;
+            font-size: 20px;
+        }
+        
+        /* Internet Hospital Section */
+        .internet-hospital-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-radius: 20px;
+        }
+        
+        .hospital-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .highlight-green {
+            color: #10c469;
+        }
+        
+        .highlight-blue {
+            color: #4a90e2;
+        }
+        
+        .screening-section h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .screening-section p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .images-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .main-image, .report-image, .lab-image {
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            min-height: 120px;
+        }
+        
+        .side-images {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .report-image, .lab-image {
+            min-height: 55px;
+            font-size: 24px;
+        }
+        
+        /* Ratings Section */
+        .ratings-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+        }
+        
+        .ratings-header h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .ratings-header p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .google-reviews {
+            margin-bottom: 30px;
+        }
+        
+        .google-logo {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .rating-display {
+            margin-bottom: 20px;
+        }
+        
+        .rating-number {
+            font-size: 64px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .stars {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #4facfe;
+        }
+        
+        .review-count {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .customer-stats {
+            margin: 30px 0;
+        }
+        
+        .customer-stats p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .satisfaction-rate {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+        
+        .percentage-green {
+            color: #10c469;
+        }
+        
+        .percentage-blue {
+            color: #4a90e2;
+        }
+        
+        .satisfaction-text {
+            color: #666;
+            font-size: 16px;
+            font-weight: normal;
+            margin-left: 10px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border: 2px solid #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            border-color: #4a90e2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.1);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .user-info h4 {
+            color: #333;
+            margin-bottom: 2px;
+        }
+        
+        .user-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .testimonial-rating {
+            color: #4facfe;
+        }
+        
+        /* Footer Accordion */
+        .footer-accordion {
+            background: #3a4a5c;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 40px 0 20px;
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid #4a5a6c;
+        }
+        
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .accordion-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: #4a5a6c;
+        }
+        
+        .accordion-icon {
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #4a5a6c;
+        }
+        
+        .accordion-content.active {
+            max-height: 200px;
+        }
+        
+        .accordion-content p {
+            padding: 0 20px 20px;
+            color: #ccc;
+            margin: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #3a4a5c;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+        
+        .footer-copyright {
+            color: #ccc;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .payment-card {
+            background: white;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .slogan-section {
+                padding: 20px 15px;
+            }
+            .logo-icon { height: 34px; }
+            
+            .slogan-section::before,
+            .slogan-section::after {
+                display: none;
+            }
+            
+            .slogan-text {
+                font-size: 22px;
+                gap: 10px;
+            }
+            
+            .slogan-word {
+                font-size: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .flash-content {
+                margin: 0 40px;
+            }
+            
+            /* bottom-section carousel already handles its own layout on mobile */
+            
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .images-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+            }
+            
+            .side-images {
+                flex-direction: row;
+                gap: 10px;
+            }
+            
+            .hospital-title {
+                font-size: 24px;
+            }
+            
+            .rating-number {
+                font-size: 48px;
+            }
+            
+            .satisfaction-rate {
+                font-size: 36px;
+            }
+            
+            .payment-methods {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img class="logo-icon" src="/static/assests/img/MelloHealthIcon.jpg" alt="Mello Health Logo" />
+                <span>Mello Health</span>
+            </div>
+            <div class="header-buttons">
+                <button class="btn-call" onclick="handleCallUs()">Call Us</button>
+                <button class="btn-login" onclick="handleLogin()">Log In</button>
+            </div>
+        </header>
+        
+        <!-- Animated Slogan Section -->
+        <div class="slogan-section">
+            <div class="slogan-text">
+                <span class="slogan-word">From</span>
+                <span class="slogan-word">Lab</span>
+                <span class="slogan-word">To</span>
+                <span class="slogan-word">Doctor's</span>
+                <span class="slogan-word">All</span>
+                <span class="slogan-word">In</span>
+                <span class="slogan-word">One</span>
+            </div>
+        </div>
+        
+        <main class="content">
+            <div class="whatsapp-booking" onclick="handleWhatsAppBooking()">
+                <div class="whatsapp-icon">
+                    <img src="/static/assests/img/whatsappIcon.png" alt="WhatsApp Icon" style = "width: 40px; height: 40px;">
+                </div>
+                <div class="whatsapp-text">
+                    <h3>Book your Appointment via WhatsApp</h3>
+                    <p>Chat with us. Book your appointment in 2 min.</p>
+                </div>
+            </div>
+            
+            <div class="flash-sale" onclick="handleFlashSale()">
+                <div class="flash-content">
+                    <h3>Mello Health Flash Sale </h3>
+                    <p>Limited Deals! login to check the eligibility</p>
+                    <button class="download-btn">Explore Now</button>
+                </div>
+            </div>
+            
+            <div class="services">
+                <div class="service-item diagnostics" onclick="handleService('diagnostics')">
+                    <div class="service-icon">🔬</div>
+                    <div class="service-content">
+                        <h3>Diagnostics: Blood Tests and Scans</h3>
+                        <p>Save upto 50% on blood tests and scans</p>
+                    </div>
+                    <div class="service-arrow">›</div>
+                </div>
+                
+                <div class="service-item health-check" onclick="handleService('health-check')">
+                    <div class="service-icon">📋</div>
+                    <div class="service-content">
+                        <h3>Health Checks at Home</h3>
+                        <p>Starting from ₹499</p>
+                    </div>
+                    <div class="service-arrow">›</div>
+                </div>
+                
+                <div class="service-item consultation" onclick="handleService('consultation')">
+                    <div class="service-icon">👨‍⚕️</div>
+                    <div class="service-content">
+                        <h3>Doctor Consultations</h3>
+                        <p>From the comfort of your home</p>
+                    </div>
+                    <div class="service-arrow">›</div>
+                </div>
+            </div>
+            
+            <div class="bottom-section">
+                <div class="carousel-fade-left"></div>
+                <div class="carousel-fade-right"></div>
+                <div class="bottom-carousel" id="bottomCarousel">
+                    <div class="bottom-slide">
+                        <div class="dashboard-card" onclick="handleDashboard()">
+                            <div class="card-icon">📊</div>
+                            <div class="card-content">
+                                <h3>My Dashboard</h3>
+                                <p>Reports, prescriptions, profile etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-slide">
+                        <div class="app-card" onclick="handleDownloadApp()">
+                            <div class="card-icon">📱</div>
+                            <div class="card-content">
+                                <h3>Download App</h3>
+                                <p>A faster way to access your data</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-slide">
+                        <div class="dashboard-card" onclick="alert('Finding labs near you...')">
+                            <div class="card-icon">🏥</div>
+                            <div class="card-content">
+                                <h3>Find Labs Near You</h3>
+                                <p>Locate trusted partner labs in your city</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-slide">
+                        <div class="app-card" onclick="alert('Upload prescription flow...')">
+                            <div class="card-icon">🧾</div>
+                            <div class="card-content">
+                                <h3>Upload Prescription</h3>
+                                <p>Get tests suggested by your doctor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-slide">
+                        <div class="dashboard-card" onclick="alert('Order medicines flow...')">
+                            <div class="card-icon">💊</div>
+                            <div class="card-content">
+                                <h3>Order Medicines</h3>
+                                <p>Quick doorstep delivery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-slide">
+                        <div class="app-card" onclick="alert('Book home sample collection...')">
+                            <div class="card-icon">🧪</div>
+                            <div class="card-content">
+                                <h3>Book Home Sample</h3>
+                                <p>Certified technicians at your doorstep</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="bottomPrev" aria-label="Previous">‹</button>
+                    <button class="carousel-btn" id="bottomNext" aria-label="Next">›</button>
+                </div>
+                <div class="carousel-dots" id="bottomCarouselDots"></div>
+            </div>
+            
+            <!-- Special Offers Section -->
+            <div class="special-offers-section">
+                <h2 class="section-title">SPECIAL OFFERS</h2>
+                
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <div class="offer-icon vitamin">🧬</div>
+                        <div class="offer-content">
+                            <h3>Vitamin Check</h3>
+                            <div class="offer-price">
+                                <span class="original-price">₹1800</span>
+                                <span class="discounted-price">₹599</span>
+                            </div>
+                            <p>Includes tests for Vitamin D & Vitamin B12 with free home service.</p>
+                        </div>
+                        <div class="offer-arrow">›</div>
+                    </div>
+                    
+                    <div class="offer-card">
+                        <div class="offer-icon health">📋</div>
+                        <div class="offer-content">
+                            <h3>Health Check</h3>
+                            <div class="offer-price">
+                                <span class="original-price">₹1000</span>
+                                <span class="discounted-price">₹499</span>
+                            </div>
+                            <p>Includes 38 tests covering Liver, Thyroid, Kidney function at home.</p>
+                        </div>
+                        <div class="offer-arrow">›</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Internet Hospital Section -->
+            <div class="internet-hospital-section">
+                <h2 class="hospital-title">
+                    We are building India's <span class="highlight-green">Internet</span><br>
+                    <span class="highlight-blue">Hospital</span>
+                </h2>
+                
+                <div class="screening-section">
+                    <h3>Get Screened at Home</h3>
+                    <p>1000s of tests, from the comfort of your home</p>
+                    
+                    <div class="images-grid">
+                        <div class="main-image">
+                            <div class="family-placeholder">👨‍👩‍👧‍👦</div>
+                        </div>
+                        <div class="side-images">
+                            <div class="report-image">📊</div>
+                            <div class="lab-image">🧪</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ratings Section -->
+            <div class="ratings-section">
+                <div class="ratings-header">
+                    <h2><span class="highlight-green">Highest</span> <span class="highlight-blue">Rated</span></h2>
+                    <p>Home Service Provider</p>
+                </div>
+                
+                <div class="google-reviews">
+                    <div class="google-logo">Google Reviews</div>
+                    <div class="rating-display">
+                        <div class="rating-number">4.8</div>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="review-count">14000+ reviews</div>
+                    </div>
+                </div>
+                
+                <div class="customer-stats">
+                    <p>20L+ customers have chosen DoctorC<br>to better their health and life</p>
+                </div>
+                
+                <div class="satisfaction-rate">
+                    <span class="percentage-green">95</span><span class="percentage-blue">%</span>
+                    <span class="satisfaction-text">love their experience</span>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="testimonials-section">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="avatar">SP</div>
+                        <div class="user-info">
+                            <h4>Srikanth Perneti</h4>
+                            <p>Hyderabad</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>I got my first blood test free with DoctorC and had a smooth and pleasant experience with the expertise of their employee who came and collected the blood sample at home.</p>
+                    </div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="avatar">RT</div>
+                        <div class="user-info">
+                            <h4>Ravi</h4>
+                            <p>Mumbai</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>I'm using DoctorC services from a very long time. My impression is that their service every time is still the best. Today, all the technicians are well trained, professional and punctual. I am satisfied with the services they provide.</p>
+                    </div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐</div>
+                </div>
+            </div>
+
+            <!-- Footer Accordion Section -->
+            <div class="footer-accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('about')">
+                        <span>About Us</span>
+                        <span class="accordion-icon" id="about-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="about-content">
+                        <p>DoctorC is India's leading digital healthcare platform providing comprehensive home healthcare services.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('services')">
+                        <span>Our Services</span>
+                        <span class="accordion-icon" id="services-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="services-content">
+                        <p>Home diagnostics, doctor consultations, health checkups, and comprehensive medical services.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('home-service')">
+                        <span>Home Service</span>
+                        <span class="accordion-icon" id="home-service-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="home-service-content">
+                        <p>Professional healthcare services delivered to your doorstep with certified technicians.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('diagnostic')">
+                        <span>Diagnostic Centers & Tests</span>
+                        <span class="accordion-icon" id="diagnostic-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="diagnostic-content">
+                        <p>State-of-the-art diagnostic centers with a wide range of medical tests and screenings.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('privacy')">
+                        <span>Privacy Policy, Terms & Conditions, etc</span>
+                        <span class="accordion-icon" id="privacy-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="privacy-content">
+                        <p>View our privacy policy, terms of service, and other legal documents.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('knowledge')">
+                        <span>Knowledge Center</span>
+                        <span class="accordion-icon" id="knowledge-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="knowledge-content">
+                        <p>Health articles, tips, and educational resources to help you stay informed.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('contact')">
+                        <span>Contact Us</span>
+                        <span class="accordion-icon" id="contact-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="contact-content">
+                        <p>Get in touch with our customer support team for any queries or assistance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-logo">Mello Health</div>
+                <div class="footer-copyright">
+                    © 2025 Simplify Wellness India Private Limited All Rights Reserved
+                </div>
+                <div class="payment-methods">
+                    <div class="payment-card mastercard">MC</div>
+                    <div class="payment-card visa">VISA</div>
+                    <div class="payment-card upi">UPI</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Accordion functionality
+        function toggleAccordion(section) {
+            const content = document.getElementById(`${section}-content`);
+            const icon = document.getElementById(`${section}-icon`);
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-content').forEach(acc => {
+                if (acc.id !== `${section}-content`) {
+                    acc.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.accordion-icon').forEach(ic => {
+                if (ic.id !== `${section}-icon`) {
+                    ic.textContent = '+';
+                    ic.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current accordion
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.textContent = '+';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('active');
+                icon.textContent = '−';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Interactive functionality
+        function handleCallUs() {
+            alert('Calling DoctorC support...');
+            // In real implementation, you would initiate a phone call
+        }
+
+        function handleLogin() {
+            alert('Redirecting to login page...');
+            // In real implementation, you would redirect to login
+        }
+
+        function handleWhatsAppBooking() {
+            alert('Opening WhatsApp for appointment booking...');
+            // In real implementation, you would open WhatsApp with pre-filled message
+            // window.open('https://wa.me/your-number?text=Hello, I would like to book an appointment', '_blank');
+        }
+
+        function handleFlashSale() {
+            alert('Redirecting to app download for flash sale...');
+            // In real implementation, you would redirect to app store
+        }
+
+        function handleService(serviceType) {
+            alert(`Opening ${serviceType} service...`);
+            // In real implementation, you would navigate to specific service page
+        }
+
+        function handleDashboard() {
+            alert('Opening dashboard...');
+            // In real implementation, you would navigate to user dashboard
+        }
+
+        function handleDownloadApp() {
+            alert('Redirecting to app store...');
+            // In real implementation, you would redirect to app store
+            // For Android: window.open('https://play.google.com/store/apps/details?id=your.app.id', '_blank');
+            // For iOS: window.open('https://apps.apple.com/app/your-app-name/idyourappid', '_blank');
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on load
+            const animateElements = document.querySelectorAll('.service-item, .dashboard-card, .app-card');
+            
+            animateElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'all 0.5s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Add click ripple effect
+            function addRippleEffect(element) {
+                element.addEventListener('click', function(e) {
+                    const ripple = document.createElement('div');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        transform: scale(0);
+                        animation: ripple 0.6s ease-out;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            }
+
+            // Add ripple effect to clickable elements
+            document.querySelectorAll('.service-item, .dashboard-card, .app-card, .whatsapp-booking, .flash-sale').forEach(addRippleEffect);
+
+            // Bottom carousel setup
+            const carousel = document.getElementById('bottomCarousel');
+            const slides = Array.from(carousel.querySelectorAll('.bottom-slide'));
+            const dotsContainer = document.getElementById('bottomCarouselDots');
+            const prevBtn = document.getElementById('bottomPrev');
+            const nextBtn = document.getElementById('bottomNext');
+            let currentIndex = 0;
+            let autoTimer;
+
+            function renderDots() {
+                dotsContainer.innerHTML = '';
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('span');
+                    dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+                    dot.addEventListener('click', () => goTo(i));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function setActiveSlide() {
+                slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+            }
+
+            function goTo(index) {
+                currentIndex = (index + slides.length) % slides.length;
+                const offset = -currentIndex * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+                renderDots();
+                setActiveSlide();
+                restartAuto();
+            }
+
+            function next() { goTo(currentIndex + 1); }
+            function prev() { goTo(currentIndex - 1); }
+
+            function startAuto() { autoTimer = setInterval(next, 4000); }
+            function stopAuto() { clearInterval(autoTimer); }
+            function restartAuto() { stopAuto(); startAuto(); }
+
+            // Button controls
+            prevBtn.addEventListener('click', () => { stopAuto(); prev(); });
+            nextBtn.addEventListener('click', () => { stopAuto(); next(); });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') { stopAuto(); prev(); }
+                if (e.key === 'ArrowRight') { stopAuto(); next(); }
+            });
+
+            // Pause on hover
+            const bottomSection = document.querySelector('.bottom-section');
+            bottomSection.addEventListener('mouseenter', stopAuto);
+            bottomSection.addEventListener('mouseleave', startAuto);
+
+            // Touch swipe support
+            let startX = 0;
+            let isDragging = false;
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                stopAuto();
+            }, { passive: true });
+            carousel.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const dx = e.touches[0].clientX - startX;
+                const percent = (dx / carousel.offsetWidth) * 100;
+                const offset = -currentIndex * 100 + percent;
+                carousel.style.transition = 'none';
+                carousel.style.transform = `translateX(${offset}%)`;
+            }, { passive: true });
+            carousel.addEventListener('touchend', (e) => {
+                carousel.style.transition = '';
+                const endX = e.changedTouches[0].clientX;
+                const dx = endX - startX;
+                if (Math.abs(dx) > carousel.offsetWidth * 0.2) {
+                    if (dx < 0) next(); else goTo(currentIndex - 1);
+                } else {
+                    goTo(currentIndex);
+                }
+                isDragging = false;
+            });
+
+            // Init
+            renderDots();
+            goTo(0);
+            startAuto();
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html> 
