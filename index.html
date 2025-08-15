@@ -12,6 +12,252 @@
     <link rel="shortcut icon" href="/static/assests/img/MelloHealthIcon.jpg" type="image/jpeg">
     <link rel="apple-touch-icon" href="/static/assests/img/MelloHealthIcon.jpg">
     <style>
+
+
+
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .flash-sale {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .flash-sale:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .flash-sale::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .flash-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flash-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .flash-icon {
+            font-size: 24px;
+            animation: flash 1.5s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .flash-content h3 {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .flash-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            margin: 4px 0 0 0;
+            font-weight: 500;
+        }
+
+        .download-btn {
+            background: white;
+            color: #ff6b6b;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Tablet Media Query */
+        @media screen and (max-width: 768px) {
+            .flash-sale {
+                padding: 16px;
+                border-radius: 10px;
+                margin: 0 10px;
+            }
+
+            .flash-content h3 {
+                font-size: 16px;
+            }
+
+            .flash-content p {
+                font-size: 13px;
+            }
+
+            .flash-icon {
+                font-size: 22px;
+            }
+
+            .download-btn {
+                padding: 10px 18px;
+                font-size: 13px;
+            }
+        }
+
+        /* Mobile Media Query */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .flash-sale {
+                padding: 12px;
+                border-radius: 8px;
+                margin: 0 5px;
+            }
+
+            .flash-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .flash-text {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .flash-icon {
+                font-size: 20px;
+            }
+
+            .flash-content h3 {
+                font-size: 15px;
+                line-height: 1.2;
+            }
+
+            .flash-content p {
+                font-size: 12px;
+                line-height: 1.3;
+            }
+
+            .download-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+                border-radius: 20px;
+                width: 100%;
+                max-width: 140px;
+            }
+        }
+
+        /* Extra Small Mobile Devices */
+        @media screen and (max-width: 360px) {
+            .flash-sale {
+                padding: 10px;
+                border-radius: 6px;
+            }
+
+            .flash-content h3 {
+                font-size: 14px;
+            }
+
+            .flash-content p {
+                font-size: 11px;
+            }
+
+            .flash-icon {
+                font-size: 18px;
+            }
+
+            .download-btn {
+                padding: 6px 14px;
+                font-size: 11px;
+            }
+        }
+
+        /* Landscape Mobile Orientation */
+        @media screen and (max-height: 480px) and (orientation: landscape) {
+            .flash-sale {
+                padding: 10px 16px;
+            }
+
+            .flash-content {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .flash-text {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .flash-content h3 {
+                font-size: 14px;
+            }
+
+            .flash-content p {
+                font-size: 11px;
+            }
+
+            .download-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+                width: auto;
+            }
+        }
+
+
+
+
+
+
+
+
+
         * {
             margin: 0;
             padding: 0;
@@ -211,129 +457,143 @@
         
         .whatsapp-booking {
             background: linear-gradient(135deg, #25d366 0%, #20c75a 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
             color: white;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 3px 12px rgba(37, 211, 102, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .whatsapp-booking::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s ease;
         }
         
         .whatsapp-booking:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            border-radius: 15px;
+        }
+        
+        .whatsapp-booking:hover::before {
+            left: 100%;
         }
         
         .whatsapp-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 12px;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .whatsapp-booking:hover .whatsapp-icon {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
         }
         
         .whatsapp-text h3 {
-            margin-bottom: 5px;
-            font-size: 18px;
+            margin-bottom: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.2;
         }
         
         .whatsapp-text p {
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.9;
+            line-height: 1.3;
+            margin: 0;
         }
         
         .flash-sale {
             background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
             color: white;
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 106, 53, 0.3);
-        }
-        
-        .flash-sale:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 106, 53, 0.4);
-        }
-        
-        .flash-sale::before {
-            content: '⚡';
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 40px;
-            animation: pulse 2s infinite;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 3px 12px rgba(255, 106, 53, 0.25);
         }
         
         .flash-sale::after {
-            content: '⚡';
+            content: '';
             position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 40px;
-            animation: pulse 2s infinite 0.5s;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: right 0.6s ease;
         }
         
-        @keyframes pulse {
-            0%, 100% { 
-                opacity: 0.7; 
-                transform: translateY(-50%) scale(1);
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            }
-            50% { 
-                opacity: 1; 
-                transform: translateY(-50%) scale(1.3);
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-            }
+        .flash-sale:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(255, 106, 53, 0.35);
+            border-radius: 15px;
         }
+        
+        .flash-sale:hover::after {
+            right: 100%;
+        }
+        
+
         
         .flash-content {
-            margin: 0 60px;
+            margin: 0 20px;
             text-align: center;
         }
         
         .flash-content h3 {
-            margin-bottom: 5px;
-            font-size: 18px;
+            margin-bottom: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.2;
         }
         
         .flash-content p {
-            font-size: 14px;
-            margin-bottom: 15px;
+            font-size: 12px;
+            margin-bottom: 8px;
             opacity: 0.9;
+            line-height: 1.3;
         }
         
         .download-btn {
             background: rgba(255,255,255,0.2);
             color: white;
-            padding: 12px 25px;
+            padding: 6px 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 11px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
         .download-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-1px);
         }
         
         .services {
@@ -691,6 +951,7 @@
             gap: 20px;
             max-width: 500px;
             margin: 0 auto;
+            align-items: start;
         }
         
         .main-image, .report-image, .lab-image {
@@ -701,12 +962,19 @@
             justify-content: center;
             font-size: 48px;
             min-height: 120px;
+            box-sizing: border-box;
+        }
+        
+        .main-image {
+            grid-row: 1 / 3;
+            min-height: 180px;
         }
         
         .side-images {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            grid-column: 2;
         }
         
         .report-image, .lab-image {
@@ -1008,7 +1276,33 @@
             }
             
             .flash-content {
-                margin: 0 30px;
+                margin: 0 15px;
+            }
+            
+            .whatsapp-booking {
+                padding: 12px 15px;
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+            
+            .whatsapp-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 16px;
+            }
+            
+            .whatsapp-text h3 {
+                font-size: 14px;
+                margin-bottom: 1px;
+            }
+            
+            .whatsapp-text p {
+                font-size: 11px;
+            }
+            
+            .download-btn {
+                padding: 7px 14px;
+                font-size: 11px;
             }
             
             .service-grid {
@@ -1086,21 +1380,29 @@
             .images-grid {
                 grid-template-columns: 1fr;
                 max-width: 280px;
-                gap: 10px;
+                gap: 15px;
+                margin: 0 auto;
             }
             
             .main-image {
-                height: 120px;
+                grid-row: auto;
+                min-height: 120px;
+                height: auto;
             }
             
             .side-images {
                 flex-direction: row;
-                gap: 8px;
+                gap: 10px;
+                grid-column: 1;
+                justify-content: center;
             }
             
             .report-image, .lab-image {
-                height: 60px;
+                min-height: 60px;
+                height: auto;
                 font-size: 20px;
+                flex: 1;
+                max-width: 120px;
             }
             
             .hospital-title {
@@ -1205,7 +1507,33 @@
             }
             
             .flash-content {
-                margin: 0 25px;
+                margin: 0 12px;
+            }
+            
+            .whatsapp-booking {
+                padding: 10px 12px;
+                gap: 6px;
+                margin-bottom: 14px;
+            }
+            
+            .whatsapp-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+            
+            .whatsapp-text h3 {
+                font-size: 13px;
+                margin-bottom: 1px;
+            }
+            
+            .whatsapp-text p {
+                font-size: 10px;
+            }
+            
+            .download-btn {
+                padding: 6px 12px;
+                font-size: 10px;
             }
             
             .service-grid {
@@ -1272,15 +1600,19 @@
             
             .images-grid {
                 max-width: 250px;
+                gap: 12px;
             }
             
             .main-image {
-                height: 100px;
+                min-height: 100px;
+                height: auto;
             }
             
             .report-image, .lab-image {
-                height: 50px;
+                min-height: 50px;
+                height: auto;
                 font-size: 18px;
+                max-width: 100px;
             }
             
             .hospital-title {
@@ -1353,6 +1685,51 @@
                 padding: 10px;
             }
             
+            .whatsapp-booking {
+                padding: 8px 10px;
+                gap: 5px;
+                margin-bottom: 12px;
+            }
+            
+            .whatsapp-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 12px;
+            }
+            
+            .whatsapp-text h3 {
+                font-size: 12px;
+                margin-bottom: 0px;
+            }
+            
+            .whatsapp-text p {
+                font-size: 9px;
+            }
+            
+            .flash-sale {
+                padding: 8px 10px;
+                margin-bottom: 12px;
+            }
+            
+            .flash-content {
+                margin: 0 8px;
+            }
+            
+            .flash-content h3 {
+                font-size: 11px;
+                margin-bottom: 0px;
+            }
+            
+            .flash-content p {
+                font-size: 8px;
+                margin-bottom: 4px;
+            }
+            
+            .download-btn {
+                padding: 3px 8px;
+                font-size: 8px;
+            }
+            
             .service-item, .offer-card, .testimonial-card {
                 padding: 10px;
             }
@@ -1375,6 +1752,23 @@
             
             .satisfaction-rate {
                 font-size: 24px;
+            }
+            
+            .images-grid {
+                max-width: 220px;
+                gap: 10px;
+            }
+            
+            .main-image {
+                min-height: 90px;
+                height: auto;
+            }
+            
+            .report-image, .lab-image {
+                min-height: 45px;
+                height: auto;
+                font-size: 16px;
+                max-width: 90px;
             }
         }
         
@@ -1422,6 +1816,17 @@
             .carousel-dot {
                 min-height: 8px;
                 min-width: 8px;
+            }
+            
+            .whatsapp-booking, .flash-sale {
+                -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+                touch-action: manipulation;
+            }
+            
+            .download-btn {
+                min-height: 44px;
+                min-width: 44px;
+                touch-action: manipulation;
             }
         }
         
@@ -1521,13 +1926,17 @@
             </div>
             
             <div class="flash-sale" onclick="handleFlashSale()">
-                <div class="flash-content">
-                    <h3>Mello Health Flash Sale </h3>
-                    <p>Limited Deals! login to check the eligibility</p>
-                    <button class="download-btn">Explore Now</button>
+        <div class="flash-content">
+            <div class="flash-text">
+                <div class="flash-icon">⚡</div>
+                <div>
+                    <h3>Mello Health Flash Sale</h3>
+                    <p>Limited Deals! Login to check eligibility</p>
                 </div>
             </div>
-            
+            <button class="download-btn">Explore Now</button>
+        </div>
+     </div>
             <div class="services">
                 <div class="service-item diagnostics" onclick="handleService('diagnostics')">
                     <div class="service-icon">🔬</div>
@@ -1663,12 +2072,12 @@
                     <span class="highlight-blue">Hospital</span>
                 </h2>
                 
-                <div class="screening-section">
+                <div class="screening-section" style="margin-bottom: -104px;">
                     <h3>Get Screened at Home</h3>
                     <p>1000s of tests, from the comfort of your home</p>
                     
-                    <div class="images-grid" style = "margin-bottom: -107px;">
-                        <div class="main-image" style = "    margin-left: -100px;">
+                    <div class="images-grid">
+                        <div class="main-image">
                             <div class="family-placeholder">👨‍👩‍👧‍👦</div>
                         </div>
                         <div class="side-images">
@@ -2043,6 +2452,26 @@
             }
         `;
         document.head.appendChild(style);
+
+        function handleFlashSale() {
+            console.log('Flash sale clicked!');
+            // Add your flash sale handling logic here
+            alert('Redirecting to flash sale page...');
+        }
+
+        // Optional: Add click analytics or tracking
+        document.querySelector('.flash-sale').addEventListener('click', function() {
+            // Track flash sale clicks
+            console.log('Flash sale engagement tracked');
+        });
+
+
+
     </script>
+
+    
+
+
+
 </body>
 </html> 
